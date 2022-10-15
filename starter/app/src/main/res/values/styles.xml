@@ -27,4 +27,11 @@
 		<item name="placeholderTextColor">@color/text_input_grey</item>=
 	</style>
 
+	<style name="MyButton" parent="Widget.Material3.Button" >
+		<item name="android:backgroundTint">@color/colorAccent</item>
+		<item name="android:paddingTop">16dp</item>
+		<item name="android:paddingBottom">16dp</item>
+		<item name="android:textSize">18sp</item>
+	</style>
+
 </resources>

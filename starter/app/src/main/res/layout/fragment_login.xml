@@ -5,6 +5,9 @@
 
 	<data>
 
+		<variable
+			name="viewModel"
+			type="com.udacity.shoestore.login.LoginViewModel" />
 	</data>
 
 	<ScrollView
@@ -45,6 +48,7 @@
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/til_email"
 				style="@style/RoundedTextInput"
+				toggleError="@{viewModel.emailErrorLiveData}"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginHorizontal="32dp"
@@ -56,19 +60,21 @@
 				app:startIconTint="@color/orange">
 
 				<com.google.android.material.textfield.TextInputEditText
+					style="@style/MyTextInputEditText"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					style="@style/MyTextInputEditText"
+					android:text="@={viewModel.emailLiveData}"
 					android:hint="@string/email"
 					android:inputType="textEmailAddress" />
 			</com.google.android.material.textfield.TextInputLayout>
 
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/til_password"
+				style="@style/RoundedTextInput"
+				toggleError="@{viewModel.passwordErrorLiveData}"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="24dp"
-				style="@style/RoundedTextInput"
 				app:endIconMode="password_toggle"
 				app:endIconTint="@color/blood_orange"
 				app:layout_constraintEnd_toEndOf="@+id/til_email"
@@ -79,22 +85,22 @@
 				app:startIconTint="@color/orange">
 
 				<com.google.android.material.textfield.TextInputEditText
+					style="@style/MyTextInputEditText"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					style="@style/MyTextInputEditText"
+					android:text="@={viewModel.passwordLiveData}"
 					android:hint="@string/password"
-					android:inputType="textEmailAddress" />
+					android:inputType="textPassword" />
 			</com.google.android.material.textfield.TextInputLayout>
 
-			<Button
+			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btn_login"
+				style="@style/MyButton"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="32dp"
-				android:backgroundTint="@color/colorAccent"
-				android:paddingVertical="16dp"
+				android:onClick="@{() -> viewModel.validateInputs()}"
 				android:text="@string/login"
-				android:textSize="18sp"
 				app:layout_constraintEnd_toEndOf="@+id/til_password"
 				app:layout_constraintStart_toStartOf="@+id/til_password"
 				app:layout_constraintTop_toBottomOf="@+id/til_password" />
@@ -130,8 +136,8 @@
 				style="@style/Widget.Material3.Button.TextButton"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/not_registered"
 				android:layout_marginTop="24dp"
+				android:text="@string/not_registered"
 				android:textColor="@color/black"
 				app:layout_constraintEnd_toStartOf="@+id/text_btn_register"
 				app:layout_constraintHorizontal_bias="0.5"
