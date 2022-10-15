@@ -44,13 +44,11 @@
 
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/til_email"
+				style="@style/RoundedTextInput"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginHorizontal="32dp"
 				android:layout_marginTop="24dp"
-				android:background="@drawable/rounded_bg"
-				android:paddingHorizontal="12dp"
-				app:hintTextColor="@color/text_input_grey"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/tv_login_title"
@@ -60,11 +58,9 @@
 				<com.google.android.material.textfield.TextInputEditText
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="@android:color/transparent"
+					style="@style/MyTextInputEditText"
 					android:hint="@string/email"
-					android:inputType="textEmailAddress"
-					android:textCursorDrawable="@null"
-					app:placeholderTextColor="@color/text_input_grey" />
+					android:inputType="textEmailAddress" />
 			</com.google.android.material.textfield.TextInputLayout>
 
 			<com.google.android.material.textfield.TextInputLayout
@@ -72,11 +68,9 @@
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="24dp"
-				android:background="@drawable/rounded_bg"
-				android:paddingHorizontal="12dp"
+				style="@style/RoundedTextInput"
 				app:endIconMode="password_toggle"
 				app:endIconTint="@color/blood_orange"
-				app:hintTextColor="@color/text_input_grey"
 				app:layout_constraintEnd_toEndOf="@+id/til_email"
 				app:layout_constraintStart_toStartOf="@+id/til_email"
 				app:layout_constraintTop_toBottomOf="@+id/til_email"
@@ -87,10 +81,9 @@
 				<com.google.android.material.textfield.TextInputEditText
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="@android:color/transparent"
+					style="@style/MyTextInputEditText"
 					android:hint="@string/password"
-					android:inputType="textEmailAddress"
-					android:textCursorDrawable="@null" />
+					android:inputType="textEmailAddress" />
 			</com.google.android.material.textfield.TextInputLayout>
 
 			<Button

@@ -14,4 +14,17 @@
 
     <style name="AppTheme.PopupOverlay" parent="Theme.Material3.Light" />
 
+	<style name="RoundedTextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+		<item name="android:background">@drawable/rounded_bg</item>
+		<item name="android:paddingStart">12dp</item>
+		<item name="android:paddingEnd">12dp</item>
+		<item name="hintTextColor">@color/text_input_grey</item>
+	</style>
+
+	<style name="MyTextInputEditText" parent="ThemeOverlay.Material3.TextInputEditText.OutlinedBox">
+		<item name="android:background">@android:color/transparent</item>
+		<item name="android:textCursorDrawable">@null</item>
+		<item name="placeholderTextColor">@color/text_input_grey</item>=
+	</style>
+
 </resources>
