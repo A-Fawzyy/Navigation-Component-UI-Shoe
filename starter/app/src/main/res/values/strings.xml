@@ -12,8 +12,10 @@
 	<string name="invalid_email">Invalid Email</string>
 	<string name="please_enter_your_email">Please, enter your email</string>
 	<string name="please_enter_your_password">Please, enter your password</string>
+	<string name="bring_agility_to_your_footsteps">Bring agility to your footsteps</string>
+	<string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
 	<string name="instructions">Instructions</string>
-	<string name="background_of_onboarding">background of onBoarding</string>
+	<string name="background_of_onBoarding">background of onBoarding</string>
 	<string name="skip">Skip</string>
 	<string name="next">Next</string>
 	<string name="finish">finish</string>
