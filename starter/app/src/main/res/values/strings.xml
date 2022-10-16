@@ -12,4 +12,9 @@
 	<string name="invalid_email">Invalid Email</string>
 	<string name="please_enter_your_email">Please, enter your email</string>
 	<string name="please_enter_your_password">Please, enter your password</string>
+	<string name="instructions">Instructions</string>
+	<string name="background_of_onboarding">background of onBoarding</string>
+	<string name="skip">Skip</string>
+	<string name="next">Next</string>
+	<string name="finish">finish</string>
 </resources>
