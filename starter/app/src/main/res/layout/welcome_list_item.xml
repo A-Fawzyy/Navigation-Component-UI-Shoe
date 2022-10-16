@@ -12,6 +12,8 @@
 		<variable
 			name="item"
 			type="com.udacity.shoestore.welcome.adapter.WelcomeItemModel" />
+
+		<import type="android.view.View"/>
 	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +56,7 @@
 			android:layout_marginHorizontal="32dp"
 			android:layout_marginTop="16dp"
 			android:textColor="@color/light_grey"
-			app:layout_constraintBottom_toTopOf="@+id/materialButton"
+			app:layout_constraintBottom_toTopOf="@+id/btn_skip"
 			app:layout_constraintEnd_toEndOf="@id/iv_background"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toStartOf="@+id/iv_background"
@@ -62,16 +64,18 @@
 			tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
 
 		<com.google.android.material.button.MaterialButton
-			android:id="@+id/materialButton"
+			android:id="@+id/btn_skip"
 			style="@style/Widget.Material3.Button.TextButton"
+			android:visibility="@{viewModel.isSkipVisibleLiveData ? View.VISIBLE : View.GONE}"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
+			android:onClick="@{() -> viewModel.emitOnSkipPressed()}"
 			android:text="@string/skip"
 			android:textColor="@color/colorAccent"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/btn_next"
-			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintHorizontal_bias="0.0"
 			app:layout_constraintHorizontal_chainStyle="spread_inside"
 			app:layout_constraintStart_toStartOf="@+id/iv_background" />
 
@@ -81,13 +85,32 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:drawableEnd="@drawable/ic_arrow_right"
-			android:onClick="@{() -> viewModel.onNextPressed()}"
-			android:text="@{viewModel.buttonTextLiveData}"
-			app:layout_constraintBottom_toBottomOf="@+id/materialButton"
+			android:visibility="@{viewModel.isNextVisibleLiveData ? View.VISIBLE : View.GONE}"
+			android:onClick="@{() -> viewModel.emitOnNextPressed()}"
+			android:text="@string/next"
+			app:layout_constraintBottom_toBottomOf="@+id/btn_skip"
 			app:layout_constraintEnd_toEndOf="@+id/iv_background"
 			app:layout_constraintHorizontal_bias="0.5"
-			app:layout_constraintStart_toEndOf="@+id/materialButton"
-			tools:text="Continue" />
+			app:layout_constraintStart_toEndOf="@+id/btn_skip"
+			tools:text="@string/next" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btn_start"
+			style="@style/Widget.Material3.Button.TextButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:drawableEnd="@drawable/ic_arrow_right"
+			android:visibility="@{viewModel.isStartVisibleLiveData ? View.VISIBLE : View.GONE}"
+			android:onClick="@{() -> viewModel.emitOnStartPressed()}"
+			android:text="@string/start"
+			app:layout_constraintBottom_toBottomOf="@+id/btn_next"
+			app:layout_constraintEnd_toEndOf="@+id/btn_next"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="@+id/btn_next"
+			app:layout_constraintTop_toTopOf="@+id/btn_next"
+			tools:backgroundTint="@android:color/system_neutral1_100"
+			tools:visibility="gone"
+			tools:text="@string/start" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

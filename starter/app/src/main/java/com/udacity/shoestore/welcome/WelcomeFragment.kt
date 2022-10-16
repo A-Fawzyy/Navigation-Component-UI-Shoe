@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
 import com.udacity.shoestore.utilities.extensions.collectLatestOnce
 import com.udacity.shoestore.welcome.adapter.WelcomeAdapter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class WelcomeFragment : Fragment() {
 
@@ -22,11 +25,11 @@ class WelcomeFragment : Fragment() {
 	private lateinit var welcomeAdapter: WelcomeAdapter
 
 	override fun onCreateView(
-		inflater: LayoutInflater, container: ViewGroup?,
-		savedInstanceState: Bundle?
+		inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
 	): View {
 		_binding = FragmentWelcomeBinding.inflate(inflater)
 		binding.viewModel = viewModel
+		binding.lifecycleOwner = this
 		val view = binding.root
 		setUpObservers()
 		return view
@@ -42,8 +45,29 @@ class WelcomeFragment : Fragment() {
 	}
 
 	private fun setUpObservers() {
-		viewModel?.onFinishPressed?.collectLatestOnce(viewLifecycleOwner) {
-			Log.i("Finish", "setUpObservers: $it")
+		viewLifecycleOwner.lifecycleScope.launch {
+			viewModel?.onStartPressed?.collectLatestOnce(viewLifecycleOwner) {
+				Log.i("Finish", "setUpObservers: $it")
+				// da tamam
+			}
+
+			viewModel?.onNextPressed?.collectLatest {
+				onNextPressed()
+			}
+
+			viewModel?.onStartPressed?.collectLatest {
+			}
+
+			viewModel?.onSkipPressed?.collectLatest {
+			}
+
+			viewModel?.currentPageIndexLiveData?.observe(viewLifecycleOwner) {
+
+			}
+		}
+
+		viewModel?._currentPageIndexLiveData?.observe(viewLifecycleOwner) {
+
 		}
 	}
 
@@ -57,5 +81,9 @@ class WelcomeFragment : Fragment() {
 				}
 			})
 		}
+	}
+
+	private fun onNextPressed() {
+		binding.viewPager.currentItem = viewModel?.currentPageIndexLiveData?.value?.plus(1) ?: 0
 	}
 }
