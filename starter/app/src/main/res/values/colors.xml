@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+	<color name="colorPrimary">@color/orange</color>
+	<color name="colorPrimaryDark">@color/dark_petrol</color>
+	<color name="colorAccent">@color/blood_orange</color>
+	243	243	243
+	<color name="off_white">#F3F3F3</color>
+	<color name="orange">#f68a55</color>
+	<color name="light_orange">#FFE0D4</color>
+	<color name="light_grey">#a2abb0</color>
+	<color name="dark_petrol">#142c31</color>
+	<color name="blood_orange">#f15406</color>
+	<color name="text_input_grey">#A58F88</color>
+	<color name="black">#000000</color>
 </resources>
